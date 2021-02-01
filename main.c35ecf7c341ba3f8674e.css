@@ -1,0 +1,2 @@
+body{margin:0;height:100%}#app{display:flex;flex-direction:column;justify-content:stretch;padding:1rem 2rem}#app dl{padding:2rem;background-color:#212121;color:#cfd8dc}#app dl dt{color:#fff;font-size:larger;padding:.5rem}#app dl dt:hover{animation-name:pulse;animation-timing-function:ease-in-out;animation-delay:.3s;animation-duration:1s;animation-iteration-count:1}#app dl dd{padding:.4rem}@keyframes pulse{0%{transform:scaleX(1)}50%{transform:scale3d(1.1,1.1,1.1)}to{transform:scaleX(1)}}
+/*# sourceMappingURL=main.c35ecf7c341ba3f8674e.css.map*/
