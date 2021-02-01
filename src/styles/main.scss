@@ -1,0 +1,57 @@
+$bgColor: #212121;
+$textSecondaryColor: #cfd8dc;
+$textPrimaryColor: white;
+$space_xxs: 0.4rem;
+$space_xs: 0.5rem;
+$space_xl: 2rem;
+$space_l: 1rem;
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  padding: $space_l $space_xl;
+
+  dl {
+    padding: $space_xl;
+    background-color: $bgColor;
+    color: $textSecondaryColor;
+
+    dt {
+      color: $textPrimaryColor;
+      font-size: larger;
+      padding: $space_xs;
+
+      &:hover {
+        animation-name: pulse;
+        animation-timing-function: ease-in-out;
+        animation-delay: 300ms;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+      }
+    }
+
+    dd {
+      padding: $space_xxs;
+    }
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
