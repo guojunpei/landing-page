@@ -3,6 +3,10 @@ import { Sizes } from './enums/sizes';
 import { Product } from './types/product';
 import './styles/main.scss';
 
+import { OptionKey } from './enums/optionKey';
+import { QuestionType } from './enums/questionType';
+
+
 const app = document.querySelector('#app');
 
 const productList: Product[] = [
@@ -16,6 +20,12 @@ const productList: Product[] = [
     name: 'Apple',
     size: Sizes.L,
     color: Colors.GREEN,
+  },
+  {
+    name: `Apple juice`,
+    size: Sizes.M,
+    color: Colors.BLUE,
+    amount: 3,
   },
 ];
 
