@@ -29,7 +29,7 @@ const questionList: Question[] = [
             notInclude:0,
         },
         optionScoreRule:"答对 10分，答错 -5 分 扣分",
-        optionKey:[OptionKey.D],
+        optionKey:[OptionKey.d],
         optionValue:["Float"],
     },
     type:QuestionType.Radio,
