@@ -15,10 +15,10 @@ const questionList: Question[] = [
     id:"Q1",
     question:"Which of the following is not JavaScript Data Types?",
     answerOption:{
-        A:"Undefined",
-        B:"Number",
-        C:"Boolean",
-        D:"Float",
+        a:"Undefined",
+        b:"Number",
+        c:"Boolean",
+        d:"Float",
     },
     rightAnswer:{
         optionScore:{

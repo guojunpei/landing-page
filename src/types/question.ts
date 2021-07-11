@@ -1,24 +1,11 @@
 import { OptionKey } from '../enums/optionKey';
 import { QuestionType } from '../enums/questionType';
+import { AnswerOption } from './answerOption';
 
 export interface Question {
   id: string;
   question: string;
-  answerOption:{
-    A:	string;
-    B:	string;
-    C?:	string;
-    D?:	string;
-    E?:	string;
-    F?:	string;
-    G?:	string;
-    H?:	string;
-    I?:	string;
-    J?:	string;
-    K?:	string;
-    L?:	string;
-    M?:	string;
-  },
+  answerOption:AnswerOption,
   rightAnswer:{
     optionScore:{
         right: number,
