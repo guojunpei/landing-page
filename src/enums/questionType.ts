@@ -1,5 +1,5 @@
 export enum QuestionType {
-    Radio = 'radio',
-    Checkbox = 'cheeckbox',
+    radio = 'radio',
+    checkbox = 'cheeckbox',
   }
   

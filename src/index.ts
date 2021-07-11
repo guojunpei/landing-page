@@ -32,7 +32,7 @@ const questionList: Question[] = [
         optionKey:[OptionKey.d],
         optionValue:["Float"],
     },
-    type:QuestionType.Radio,
+    type:QuestionType.radio,
     score:0,
 }
 ]
