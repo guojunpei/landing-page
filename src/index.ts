@@ -212,6 +212,26 @@ const productList: Product[] = [
   },
 ];
 
+const getHtmlContent = (question: Question): string =>{
+  let htmlString = '';
+  htmlString += `
+  <div class="question-and-answer">
+    <div class="question-zone">
+      <div class="question-number">
+      ${question.id}
+      </div>
+      <div class="question-content">
+      ${question.question}
+      </div>
+    </div>
+    <div class="answer-zone">
+      
+    </div>
+  </div>`;
+  
+  return htmlString;
+}
+
 const getHtmlDlContent = (product: Product): string => {
   let htmlString = '';
   htmlString += `<dt>${product.name}</dt>`;
