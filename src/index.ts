@@ -213,23 +213,31 @@ const productList: Product[] = [
 ];
 
 const getHtmlContent = (question: Question): string =>{
-  let htmlString = '';
-  htmlString += `
-  <div class="question-and-answer">
-    <div class="question-zone">
-      <div class="question-number">
-      ${question.id}
-      </div>
-      <div class="question-content">
-      ${question.question}
-      </div>
-    </div>
-    <div class="answer-zone">
+  let htmlAnswerString = '';
+  htmlAnswerString += `
+  <div class="answers">
+    <input type="${question.type}">
       
     </div>
   </div>`;
+
+  let htmlQuestionString = '';
+  htmlQuestionString += `
+  <div class="question-and-answer">
+    <div class="question-zone">
+      <div class="question-number">
+        ${question.id}
+      </div>
+      <div class="question-content">
+        ${question.question}
+      </div>
+    </div>
+    <div class="answer-zone">
+      ${htmlAnswerString}
+    </div>
+  </div>`;
   
-  return htmlString;
+  return htmlQuestionString;
 }
 
 const getHtmlDlContent = (product: Product): string => {
