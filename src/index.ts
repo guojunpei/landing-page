@@ -6,6 +6,7 @@ import './styles/main.scss';
 import { OptionKey } from './enums/optionKey';
 import { QuestionType } from './enums/questionType';
 import { Question } from './types/question';
+import { AnswerOption } from './types/answerOption';
 
 
 const app = document.querySelector('#app');
@@ -212,33 +213,46 @@ const productList: Product[] = [
   },
 ];
 
-const getHtmlContent = (question: Question): string =>{
+const getAnswerContent = (answer: string): string=>{
   let htmlAnswerString = '';
   htmlAnswerString += `
   <div class="answers">
-    <input type="${question.type}">
-      
-    </div>
+    <input type="${QuestionType}" id="**question.id${+OptionKey}" value="${OptionKey}>
+    <label for="**question.id${+OptionKey}">
+      ${answer}
+    </label>
   </div>`;
 
+return htmlAnswerString;
+}
+
+const getHtmlQuestionContent = (answers: AnswerOption): string =>{
   let htmlQuestionString = '';
   htmlQuestionString += `
   <div class="question-and-answer">
     <div class="question-zone">
       <div class="question-number">
-        ${question.id}
+        **question.id
       </div>
       <div class="question-content">
-        ${question.question}
+        **question.question
       </div>
     </div>
     <div class="answer-zone">
-      ${htmlAnswerString}
+      ${Object.keys(answers).map((answer) => getAnswerContent(answer))}
     </div>
   </div>`;
   
   return htmlQuestionString;
 }
+
+const getNHtml=(questions:Question[]): string =>{
+
+  return `<div>${questions.map((question) => getHtmlQuestionContent(question.answerOption))}</div>`;
+
+};
+
+app.innerHTML =getNHtml(questionList);
 
 const getHtmlDlContent = (product: Product): string => {
   let htmlString = '';
