@@ -213,33 +213,42 @@ const productList: Product[] = [
   },
 ];
 
-const getAnswerContent = (answer: string): string=>{
-  let htmlAnswerString = '';
-  htmlAnswerString += `
-  <div class="answers">
-    <input type="${QuestionType}" id="**question.id${+OptionKey}" value="${OptionKey}>
-    <label for="**question.id${+OptionKey}">
-      ${answer}
-    </label>
-  </div>`;
 
-return htmlAnswerString;
-}
+const getQuestionContent = (question: Question): string =>{
+  const getAnswerContent = (answer: string): string=>{
+    let htmlAnswerString = '';
+    htmlAnswerString += `
+    <div class="answers">
+      <input type="${QuestionType}" id="${question.id+OptionKey}" value="${OptionKey}>
+      <label for="${question.id+OptionKey}">
+        ${answer}
+      </label>
+    </div>`;
+  
+  return htmlAnswerString;
+  };
 
-const getHtmlQuestionContent = (answers: AnswerOption): string =>{
+  const getAnswersContent = (answers: AnswerOption): string =>{
+    let htmlAnswersString = '';
+    htmlAnswersString += `
+    ${Object.keys(answers).map((answer) => getAnswerContent(answer))}`;
+    
+    return htmlAnswersString;
+  };
+
   let htmlQuestionString = '';
   htmlQuestionString += `
   <div class="question-and-answer">
     <div class="question-zone">
       <div class="question-number">
-        **question.id
+        ${question.id}
       </div>
       <div class="question-content">
-        **question.question
+        ${question.question}
       </div>
     </div>
     <div class="answer-zone">
-      ${Object.keys(answers).map((answer) => getAnswerContent(answer))}
+      ${getAnswersContent(question.answerOption)}
     </div>
   </div>`;
   
@@ -247,8 +256,29 @@ const getHtmlQuestionContent = (answers: AnswerOption): string =>{
 }
 
 const getNHtml=(questions:Question[]): string =>{
+  let htmlString = '';
+  htmlString += `
+    <div>
+      <h1>Quiz : test your web knowledge</h1>
+    </div>
 
-  return `<div>${questions.map((question) => getHtmlQuestionContent(question.answerOption))}</div>`;
+    <form action>
+      <div id="main-paper">${questions.map((question) => getQuestionContent(question))}</div>
+    </form>
+
+    <div id="show-score">
+      <div id="show-score-text">
+        your score:
+      </div>
+      <div id="show-score-number">
+        0
+      </div>
+      <div id="score-detail">
+        0
+      </div>
+    </div>`
+
+  return htmlString;
 
 };
 
