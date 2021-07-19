@@ -284,6 +284,42 @@ const getNHtml=(questions:Question[]): string =>{
 
 app.innerHTML =getNHtml(questionList);
 
+
+let save=[0];
+const mainForm = document.querySelector("form");
+
+function formCheck(){
+    let lossQnArry=[];
+    let doneQnArry=[];
+    let lossQnString="";
+    for(const qn of questionList){
+        for(let k of Object.keys(qn.answerOption)){
+            if(document.getElementById(`${qn.id}${k}`).spellcheck){
+                doneQnArry.push(qn.id);
+            }
+        }
+    }
+
+    for(const qn of questionList){
+        if(!doneQnArry.includes(qn.id)){
+            lossQnArry.push(qn.id);
+            lossQnString+=qn.id+",";
+        }
+    }
+    //document.getElementById("tip-number-done").innerText=`${doneQnArry.length}`;
+    document.getElementById("tip-number-done").innerText=`${questionList.length-lossQnArry.length}`;
+    document.getElementById("tip-number-lose").innerText=`${lossQnArry.length}`;
+    
+    if(lossQnString!==""){
+        document.getElementById("quiz-submit").style.color="red"
+
+    }else{
+        document.getElementById("quiz-submit").style.color="green"
+    }
+
+}
+
+/*
 const getHtmlDlContent = (product: Product): string => {
   let htmlString = '';
   htmlString += `<dt>${product.name}</dt>`;
@@ -308,3 +344,4 @@ const getHtml = (products: Product[]): string => {
 };
 
 app.innerHTML = getHtml(productList);
+*/
