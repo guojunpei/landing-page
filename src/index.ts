@@ -219,7 +219,7 @@ const getQuestionContent = (question: Question): string =>{
     let htmlAnswerString = '';
     htmlAnswerString += `
     <div class="answers">
-      <input type="${QuestionType}" id="${question.id+OptionKey}" value="${OptionKey}>
+      <input type="${QuestionType}" id="${question.id+OptionKey}" value="${OptionKey} name="question${question.id}">
       <label for="${question.id+OptionKey}">
         ${answer}
       </label>
@@ -294,7 +294,7 @@ function formCheck(){
     let lossQnString="";
     for(const qn of questionList){
         for(let k of Object.keys(qn.answerOption)){
-            if(document.getElementById(`${qn.id}${k}`).spellcheck){
+            if(document.getElementById(`${qn.id}${k}`).checked){
                 doneQnArry.push(qn.id);
             }
         }
@@ -306,7 +306,6 @@ function formCheck(){
             lossQnString+=qn.id+",";
         }
     }
-    //document.getElementById("tip-number-done").innerText=`${doneQnArry.length}`;
     document.getElementById("tip-number-done").innerText=`${questionList.length-lossQnArry.length}`;
     document.getElementById("tip-number-lose").innerText=`${lossQnArry.length}`;
     
