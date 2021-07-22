@@ -318,6 +318,11 @@ function formCheck(){
 
 }
 
+mainForm.addEventListener("submit",()=>{
+  
+})
+
+/*
 mainForm.addEventListener("formdata",(e)=>{
   const userAnswer = Object.fromEntries(e.formData);
 
@@ -399,7 +404,7 @@ mainForm.addEventListener("formdata",(e)=>{
   document.getElementById("show-score-number").style.fontSize="4rem";
   document.getElementById("show-score-number").innerText = save[0];
 })
-
+*/
 /*
 const getHtmlDlContent = (product: Product): string => {
   let htmlString = '';
