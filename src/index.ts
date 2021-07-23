@@ -318,11 +318,6 @@ function formCheck(){
 
 }
 
-mainForm.addEventListener("submit",()=>{
-  
-})
-
-/*
 mainForm.addEventListener("formdata",(e)=>{
   const userAnswer = Object.fromEntries(e.formData);
 
@@ -363,8 +358,8 @@ mainForm.addEventListener("formdata",(e)=>{
   const tableThead = document.createElement("thead");
   const tableTrHead = document.createElement("tr");
   const tableThHead = document.createElement("th");
-  tableThHead.innerText="Score detail";
-  tableThHead.colSpan="3";
+  tableThHead.innerText= "Score detail";
+  tableThHead.colSpan= 3;
   tableTrHead.appendChild(tableThHead);
   tableThead.appendChild(tableTrHead);
   scoreTable.appendChild(tableThead);
@@ -388,9 +383,9 @@ mainForm.addEventListener("formdata",(e)=>{
       const tableTdQnY = document.createElement("td");
       tableTdQn.innerText=qn.id;
       tableTrTd.appendChild(tableTdQn);
-      tableTdQnS.innerText=qn.rightAnswer.optionScore.right;
+      tableTdQnS.innerText=`${qn.rightAnswer.optionScore.right}`;
       tableTrTd.appendChild(tableTdQnS);
-      tableTdQnY.innerText=qn.score;
+      tableTdQnY.innerText=`${qn.score}`;
       tableTrTd.appendChild(tableTdQnY);
       scoreTable.appendChild(tableTrTd);
   }
@@ -402,9 +397,9 @@ mainForm.addEventListener("formdata",(e)=>{
   document.getElementById("show-score-text").style.color="white";
   document.getElementById("show-score-text").innerText="Congratulations!\n All the questions has be finshed!\n your final score is";
   document.getElementById("show-score-number").style.fontSize="4rem";
-  document.getElementById("show-score-number").innerText = save[0];
+  document.getElementById("show-score-number").innerText = `${save[0]}`;
 })
-*/
+
 /*
 const getHtmlDlContent = (product: Product): string => {
   let htmlString = '';
