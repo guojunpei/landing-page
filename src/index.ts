@@ -7,6 +7,7 @@ import { OptionKey } from './enums/optionKey';
 import { QuestionType } from './enums/questionType';
 import { Question } from './types/question';
 import { AnswerOption } from './types/answerOption';
+import { WarmingColors } from './enums/warmingColors';
 
 
 const app = document.querySelector('#app');
@@ -310,10 +311,10 @@ function formCheck(){
     document.getElementById("tip-number-lose").innerText=`${lossQnArry.length}`;
     
     if(lossQnString!==""){
-        document.getElementById("quiz-submit").style.color="red"
+        document.getElementById("quiz-submit").style.color=WarmingColors.RED;
 
     }else{
-        document.getElementById("quiz-submit").style.color="green"
+        document.getElementById("quiz-submit").style.color=WarmingColors.GREEN;
     }
 
 }
@@ -328,7 +329,7 @@ mainForm.addEventListener("formdata",(e)=>{
       let rightAnswerObj = JSON.parse(k);
       let rs=rightAnswerObj.rightAnswer.optionScore;
       let rk=rightAnswerObj.rightAnswer.optionKey;
-      if(rightAnswerObj.type==="radio"){
+      if(rightAnswerObj.type===QuestionType.radio){
           if(rk.includes(v)){
               sn=rs.right;
           }else{
@@ -345,7 +346,7 @@ mainForm.addEventListener("formdata",(e)=>{
       for(let qn of questionList){
           if(qn.id===rightAnswerObj.id){
               qn.score+=sn;
-              if(qn.type==="checkbox" && qn.score===qn.rightAnswer.optionScore.includeEquipartition){
+              if(qn.type===QuestionType.checkbox && qn.score===qn.rightAnswer.optionScore.includeEquipartition){
                   qn.score=qn.rightAnswer.optionScore.right;
               }
           }
