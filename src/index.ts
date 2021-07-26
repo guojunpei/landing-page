@@ -285,8 +285,8 @@ const getNHtml=(questions:Question[]): string =>{
 
 app.innerHTML =getNHtml(questionList);
 
-
-let save=[0];
+let saveAnswers:any[]=[0];
+//saveAnswers=[scoreNumber,question1AnswerObject,question2AnswerObject...]
 const mainForm = document.querySelector("form");
 
 function formCheck(){
@@ -295,7 +295,7 @@ function formCheck(){
     let lossQnString="";
     for(const qn of questionList){
         for(let k of Object.keys(qn.answerOption)){
-            if(document.getElementById(`${qn.id}${k}`).checked){
+          if((document.getElementById(`${qn.id}${k}`) as HTMLInputElement).checked){
                 doneQnArry.push(qn.id);
             }
         }
@@ -322,7 +322,7 @@ function formCheck(){
 mainForm.addEventListener("formdata",(e)=>{
   const userAnswer = Object.fromEntries(e.formData);
 
-  save.push(userAnswer);
+  saveAnswers.push(userAnswer);
 
   for(let [k,v] of e.formData){
       let sn=0;
@@ -376,7 +376,7 @@ mainForm.addEventListener("formdata",(e)=>{
   tableTrTh.appendChild(tableThYs);
   scoreTable.appendChild(tableTrTh);
   for(let qn of questionList){
-      save[0]=save[0]+qn.score;
+    saveAnswers[0]=saveAnswers[0]+qn.score;
       
       const tableTrTd = document.createElement("tr");
       const tableTdQn = document.createElement("td");
@@ -398,7 +398,7 @@ mainForm.addEventListener("formdata",(e)=>{
   document.getElementById("show-score-text").style.color="white";
   document.getElementById("show-score-text").innerText="Congratulations!\n All the questions has be finshed!\n your final score is";
   document.getElementById("show-score-number").style.fontSize="4rem";
-  document.getElementById("show-score-number").innerText = `${save[0]}`;
+  document.getElementById("show-score-number").innerText = `${saveAnswers[0]}`;
 })
 
 /*
