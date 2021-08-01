@@ -8,6 +8,7 @@ import { QuestionType } from './enums/questionType';
 import { Question } from './types/question';
 import { AnswerOption } from './types/answerOption';
 import { WarmingColors } from './enums/warmingColors';
+import { AnwserSave } from './types/answerSave';
 
 
 const app = document.querySelector('#app');
@@ -285,8 +286,15 @@ const getNHtml=(questions:Question[]): string =>{
 
 app.innerHTML =getNHtml(questionList);
 
-let saveAnswers:any[]=[0];
+let saveAnswer:AnwserSave={
+  score:0,
+  //time:new Date,
+  answerAndQuestion:[],
+};
+
+//let saveAnswers:any[]=[0];
 //saveAnswers=[scoreNumber,question1AnswerObject,question2AnswerObject...]
+
 const mainForm = document.querySelector("form");
 
 function formCheck(){
@@ -322,7 +330,7 @@ function formCheck(){
 mainForm.addEventListener("formdata",(e)=>{
   const userAnswer = Object.fromEntries(e.formData);
 
-  saveAnswers.push(userAnswer);
+  saveAnswer.answerAndQuestion.push(userAnswer);
 
   for(let [k,v] of e.formData){
       let sn=0;
@@ -376,7 +384,7 @@ mainForm.addEventListener("formdata",(e)=>{
   tableTrTh.appendChild(tableThYs);
   scoreTable.appendChild(tableTrTh);
   for(let qn of questionList){
-    saveAnswers[0]=saveAnswers[0]+qn.score;
+    saveAnswer.score=saveAnswer.score+qn.score;
       
       const tableTrTd = document.createElement("tr");
       const tableTdQn = document.createElement("td");
@@ -398,7 +406,7 @@ mainForm.addEventListener("formdata",(e)=>{
   document.getElementById("show-score-text").style.color="white";
   document.getElementById("show-score-text").innerText="Congratulations!\n All the questions has be finshed!\n your final score is";
   document.getElementById("show-score-number").style.fontSize="4rem";
-  document.getElementById("show-score-number").innerText = `${saveAnswers[0]}`;
+  document.getElementById("show-score-number").innerText = `${saveAnswer.score}`;
 })
 
 /*

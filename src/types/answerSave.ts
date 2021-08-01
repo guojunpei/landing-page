@@ -9,13 +9,13 @@ let questionIds:string[]=[questionId];
 
 export type AnwserSave = {
     score:number;
-    time:Date;
+    time?:Date;
+    answerAndQuestion:object[];
     //[key:string]:string;
     //[key in OptionKey]?:string
-    answerAndquestion:object[];
     //**objct{questionid:string;answerContent:string;answerOption:optionKey;}
-    questionIds?:string[];
-    answerContents?:object[];
+    //questionIds?:string[];
+    //answerContents?:object[];
 }
 /*
 type Point = { x: number; y: number };
