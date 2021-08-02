@@ -327,7 +327,7 @@ function formCheck(){
 
 }
 
-mainForm.addEventListener("formdata",(e)=>{
+mainForm.addEventListener("formdata",(e:any)=>{
   const userAnswer = Object.fromEntries(e.formData);
 
   saveAnswer.answerAndQuestion.push(userAnswer);
