@@ -221,11 +221,12 @@ const getQuestionContent = (question: Question): string =>{
     let htmlAnswerString = '';
     htmlAnswerString += `
     <div class="answers">
-      <input type="${QuestionType}" id="${question.id+OptionKey}" value="${OptionKey} name="question${question.id}">
+      <input type="${QuestionType.radio}" id="${question.id+OptionKey}" value="${OptionKey.a} name="question${question.id}">
       <label for="${question.id+OptionKey}">
         ${answer}
       </label>
-    </div>`;
+    </div>
+    `;
   
   return htmlAnswerString;
   };
@@ -233,7 +234,8 @@ const getQuestionContent = (question: Question): string =>{
   const getAnswersContent = (answers: AnswerOption): string =>{
     let htmlAnswersString = '';
     htmlAnswersString += `
-    ${Object.keys(answers).map((answer) => getAnswerContent(answer))}`;
+    ${Object.keys(answers).map((answer) => getAnswerContent(answer))}
+    `;
     
     return htmlAnswersString;
   };
