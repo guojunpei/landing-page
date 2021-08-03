@@ -221,9 +221,9 @@ const getQuestionContent = (question: Question): string =>{
     let htmlAnswerString = '';
     htmlAnswerString += `
     <div class="answers">
-      <input type="${QuestionType.radio}" id="${question.id+OptionKey}" value="${OptionKey.a} name="question${question.id}">
-      <label for="${question.id+OptionKey}">
-        ${answer}
+      <input type="${question.type}" id="${question.id+OptionKey.a}" value="${OptionKey.a} name="question${question.id}">
+      <label for="${question.id+OptionKey.a}">
+        ${question.answerOption.a}
       </label>
     </div>
     `;
