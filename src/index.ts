@@ -191,8 +191,6 @@ const questionList: Question[] = [
   type:QuestionType.checkbox,
   score:0,
 }
-
-
 ]
 
 const productList: Product[] = [
@@ -217,13 +215,13 @@ const productList: Product[] = [
 
 
 const getQuestionContent = (question: Question): string =>{
-  const getAnswerContent = (answer: string): string=>{
+  const getAnswerContent = (answerKey: string, answerValue: string): string=>{
     let htmlAnswerString = '';
     htmlAnswerString += `
     <div class="answers">
-      <input type="${question.type}" id="${question.id+OptionKey.a}" value="${OptionKey.a} name="question${question.id}">
-      <label for="${question.id+OptionKey.a}">
-        ${question.answerOption.a}
+      <input type="${question.type}" id="${question.id+answerKey}" value="${answerKey} name="question${question.id}">
+      <label for="${question.id+answerKey}">
+      ${answerKey}:${answerValue}
       </label>
     </div>
     `;
@@ -234,7 +232,7 @@ const getQuestionContent = (question: Question): string =>{
   const getAnswersContent = (answers: AnswerOption): string =>{
     let htmlAnswersString = '';
     htmlAnswersString += `
-    ${Object.keys(answers).map((answer) => getAnswerContent(answer))}
+    ${Object.entries(answers).map((li) => getAnswerContent(li[0],li[1]))}
     `;
     
     return htmlAnswersString;
