@@ -193,6 +193,7 @@ const questionList: Question[] = [
 }
 ]
 
+/*
 const productList: Product[] = [
   {
     name: 'Orange Juice',
@@ -212,7 +213,7 @@ const productList: Product[] = [
     amount: 3,
   },
 ];
-
+*/
 
 const getQuestionContent = (question: Question): string =>{
   const getAnswerContent = (answerKey: string, answerValue: string): string=>{
@@ -408,6 +409,8 @@ mainForm.addEventListener("formdata",(e:any)=>{
   document.getElementById("show-score-number").style.fontSize="4rem";
   document.getElementById("show-score-number").innerText = `${saveAnswer.score}`;
 })
+
+mainForm.addEventListener("click",formCheck);
 
 /*
 const getHtmlDlContent = (product: Product): string => {
