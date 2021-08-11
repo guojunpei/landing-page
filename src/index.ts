@@ -304,9 +304,11 @@ function formCheck(){
     let lossQnString="";
     for(const qn of questionList){
         for(let k of Object.keys(qn.answerOption)){
-          if((document.getElementById(`${qn.id}${k}`) as HTMLInputElement).checked){
-                doneQnArry.push(qn.id);
+          if(document.getElementById(`${qn.id}${k}`)!=null){
+            if((document.getElementById(`${qn.id}${k}`) as HTMLInputElement).checked){
+            doneQnArry.push(qn.id);
             }
+          }
         }
     }
 
