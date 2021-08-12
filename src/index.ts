@@ -217,12 +217,12 @@ const productList: Product[] = [
 
 const getQuestionContent = (question: Question): string =>{
   const getAnswerContent = (answerKey: string, answerValue: string): string=>{
-    let htmlAnswerString = '';
+    let htmlAnswerString: string = "";
     htmlAnswerString += `
     <div class="answers">
       <input type="${question.type}" id="${question.id+answerKey}" value="${answerKey} name="question${question.id}">
       <label for="${question.id+answerKey}">
-      ${answerKey}:${answerValue}
+      ${answerKey.toUpperCase()}:${answerValue}
       </label>
     </div>
     `;
@@ -231,7 +231,7 @@ const getQuestionContent = (question: Question): string =>{
   };
 
   const getAnswersContent = (answers: AnswerOption): string =>{
-    let htmlAnswersString = '';
+    let htmlAnswersString: string = "";
     htmlAnswersString += `
     ${Object.entries(answers).map((li) => getAnswerContent(li[0],li[1]))}
     `;
@@ -239,7 +239,7 @@ const getQuestionContent = (question: Question): string =>{
     return htmlAnswersString;
   };
 
-  let htmlQuestionString = '';
+  let htmlQuestionString: string = "";
   htmlQuestionString += `
   <div class="question-and-answer">
     <div class="question-zone">
@@ -259,8 +259,9 @@ const getQuestionContent = (question: Question): string =>{
 }
 
 const getNHtml=(questions:Question[]): string =>{
-  let htmlString = '';
-  htmlString += `
+  let htmlString: string = "";
+  if(questions!=undefined){
+    htmlString += `
     <div>
       <h1>Quiz : test your web knowledge</h1>
     </div>
@@ -280,6 +281,7 @@ const getNHtml=(questions:Question[]): string =>{
         0
       </div>
     </div>`
+  }
 
   return htmlString;
 
