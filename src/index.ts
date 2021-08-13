@@ -220,7 +220,7 @@ const getQuestionContent = (question: Question): string =>{
     let htmlAnswerString: string = "";
     htmlAnswerString += `
     <div class="answers">
-      <input type="${question.type}" id="${question.id+answerKey}" value="${answerKey} name="question${question.id}">
+      <input type="${question.type}" id="${question.id+answerKey}" value="${answerKey}" name="question${question.id}">
       <label for="${question.id+answerKey}">
       ${answerKey.toUpperCase()}:${answerValue}
       </label>
@@ -233,7 +233,7 @@ const getQuestionContent = (question: Question): string =>{
   const getAnswersContent = (answers: AnswerOption): string =>{
     let htmlAnswersString: string = "";
     htmlAnswersString += `
-    ${Object.entries(answers).map((li) => getAnswerContent(li[0],li[1]))}
+    ${Object.entries(answers).map((li) => getAnswerContent(li[0], li[1]))}
     `;
     
     return htmlAnswersString;
@@ -244,7 +244,7 @@ const getQuestionContent = (question: Question): string =>{
   <div class="question-and-answer">
     <div class="question-zone">
       <div class="question-number">
-        ${question.id}
+        ${question.id}:
       </div>
       <div class="question-content">
         ${question.question}
