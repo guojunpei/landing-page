@@ -1,4 +1,5 @@
 import { Question } from './types/question';
+import { optionEleToString } from './optionEleToString';
 
 const getAnswerContent = (
   question: Question,
@@ -7,12 +8,13 @@ const getAnswerContent = (
 ): string => {
   return `
     <div class="answers">
-      <input type="${question.type}" id="${
-    question.id
-  }${answerKey}" value="${answerKey}" name="question${question.id}"/>
-      <label for="${question.id}${answerKey}">
-      ${answerKey.toUpperCase()}:${answerValue}
-      </label>
+      ${optionEleToString(
+        question.type,
+        `${question.id}${answerKey}`,
+        answerKey,
+        `question${question.id}`,
+        `${answerKey.toUpperCase()}:${answerValue}`
+      )}
     </div>
     `;
 };
